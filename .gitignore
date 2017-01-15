@@ -4,6 +4,7 @@
 *.so
 *.log
 .idea
+.vscode
 # Folders
 _*
 
