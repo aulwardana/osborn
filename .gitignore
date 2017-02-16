@@ -8,10 +8,6 @@
 .idea
 .vscode
 
-# Folders
-_*
-
-
 # Architecture specific extensions/prefixes
 *.[568vq]
 [568vq].out
@@ -28,3 +24,12 @@ osborn
 *.exe
 *.ags
 *.prof
+
+# Folders
+_*
+samples/application/application
+samples/application/assets/typings/*
+samples/application/assets/node_modules/*
+samples/application/assets/*.log
+samples/application/assets/app/**/*.js
+samples/application/assets/app/**/*.js.map
