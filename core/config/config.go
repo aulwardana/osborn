@@ -11,12 +11,15 @@ import (
 )
 
 const (
-	WEB_ADDRESS            string = "web.address"
-	WEB_PORT               string = "web.port"
-	WEB_TEMPLATE_DIR       string = "web.template-dir"
-	PG_URI                 string = "pg.uri"
-	PG_MAX_CONNECTION      string = "pg.max-connection"
-	PG_MAX_IDLE_CONNECTION string = "pg.max-idle-connection"
+	WEB_ADDRESS      string = "web.address"
+	WEB_PORT         string = "web.port"
+	WEB_TEMPLATE_DIR string = "web.template-dir"
+	PG_HOST          string = "pg.host"
+	PG_PORT          string = "pg.port"
+	PG_USER          string = "pg.user"
+	PG_PASSWORD      string = "pg.password"
+	PG_DBNAME        string = "pg.dbname"
+	PG_SSLMODE       string = "pg.sslmode"
 )
 
 type WebConfig struct {
@@ -26,9 +29,12 @@ type WebConfig struct {
 }
 
 type PgConfig struct {
-	Uri               string
-	MaxConnection     int
-	MaxIdleConnection int
+	Host     string
+	Port     int
+	User     string
+	Password string
+	DBName   string
+	SSLMode  string
 }
 
 type Config struct {
@@ -43,9 +49,12 @@ func setDefaults(v *viper.Viper) {
 	v.SetDefault(WEB_TEMPLATE_DIR, "./assets/")
 
 	// db stores
-	v.SetDefault(PG_URI, "")
-	v.SetDefault(PG_MAX_CONNECTION, 10)
-	v.SetDefault(PG_MAX_IDLE_CONNECTION, 8)
+	v.SetDefault(PG_HOST, "localhost")
+	v.SetDefault(PG_PORT, 5432)
+	v.SetDefault(PG_USER, "postgres")
+	v.SetDefault(PG_PASSWORD, "postgres")
+	v.SetDefault(PG_DBNAME, "postgres")
+	v.SetDefault(PG_SSLMODE, "disable")
 }
 
 func loadConfPath(v *viper.Viper, path string) error {
@@ -72,9 +81,12 @@ func (c *Config) Web() *WebConfig {
 
 func (c *Config) Postgres() *PgConfig {
 	return &PgConfig{
-		Uri:               c.GetString(PG_URI),
-		MaxConnection:     c.GetInt(PG_MAX_CONNECTION),
-		MaxIdleConnection: c.GetInt(PG_MAX_IDLE_CONNECTION),
+		Host:     c.GetString(PG_HOST),
+		Port:     c.GetInt(PG_PORT),
+		User:     c.GetString(PG_USER),
+		Password: c.GetString(PG_PASSWORD),
+		DBName:   c.GetString(PG_DBNAME),
+		SSLMode:  c.GetString(PG_SSLMODE),
 	}
 }
 

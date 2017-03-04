@@ -13,10 +13,17 @@ var (
 	cnf *config.Config
 )
 
-func main() {
+func settingsInit() {
 	if err := initConfig(); err != nil {
 		panic(err)
 	}
+
+	initDBSql()
+}
+
+func main() {
+	settingsInit()
+
 	r := mux.NewRouter()
 
 	api.Route(r, "/halo", dummy, api.GET)
