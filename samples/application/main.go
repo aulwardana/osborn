@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
+	"osborn/core"
 	"osborn/core/config"
 	"osborn/core/modules/api"
 	"osborn/core/modules/templates"
@@ -24,11 +22,5 @@ func main() {
 	api.Route(r, "/halo", dummy, api.GET)
 	template.ServeAngular(r, "/", cnf.Web().TemplateDir)
 
-	server := http.Server{
-		Addr: fmt.Sprintf("%s:%d", cnf.Web().Address, cnf.Web().Port),
-	}
-
-	http.Handle("/", r)
-	log.Println("Server started:" + server.Addr)
-	log.Fatal(server.ListenAndServe())
+	core.Run(r, cnf.Web().Address, cnf.Web().Port)
 }
