@@ -1,22 +1,34 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"osborn/core/config"
 	"osborn/core/modules/api"
 	"osborn/core/modules/templates"
 
 	"github.com/gorilla/mux"
 )
 
+var (
+	cnf *config.Config
+)
+
 func main() {
-	port := "8000"
+	if err := initConfig(); err != nil {
+		panic(err)
+	}
 	r := mux.NewRouter()
 
 	api.Route(r, "/halo", dummy, api.GET)
-	template.ServeAngular(r, "/", "./assets/")
+	template.ServeAngular(r, "/", cnf.Web().TemplateDir)
+
+	server := http.Server{
+		Addr: fmt.Sprintf("%s:%d", cnf.Web().Address, cnf.Web().Port),
+	}
 
 	http.Handle("/", r)
-	log.Println("Server started: http://localhost:" + port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
+	log.Println("Server started:" + server.Addr)
+	log.Fatal(server.ListenAndServe())
 }
