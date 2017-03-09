@@ -1,4 +1,16 @@
 web: 
   address: "localhost"
   port: 8000
-  template-dir: ./assets/
+  template-dir: "./assets/"
+pg: 
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: "postgres"
+  dbname: "postgres"
+  sslmode: "disable"
+mgo: 
+  hosts: "localhost:27017"
+  user: "aulwardana"
+  password: "rahasia"
+  dbname: "kijang"

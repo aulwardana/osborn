@@ -19,6 +19,7 @@ func settingsInit() {
 	}
 
 	initDBSql()
+	initDBNoSql()
 }
 
 func main() {

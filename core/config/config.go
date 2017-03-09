@@ -20,6 +20,10 @@ const (
 	PG_PASSWORD      string = "pg.password"
 	PG_DBNAME        string = "pg.dbname"
 	PG_SSLMODE       string = "pg.sslmode"
+	MGO_HOSTS        string = "mgo.hosts"
+	MGO_USER         string = "mgo.user"
+	MGO_PASSWORD     string = "mgo.password"
+	MGO_DBNAME       string = "mgo.dbname"
 )
 
 type WebConfig struct {
@@ -37,6 +41,13 @@ type PgConfig struct {
 	SSLMode  string
 }
 
+type MgoConfig struct {
+	Hosts    string
+	User     string
+	Password string
+	DBName   string
+}
+
 type Config struct {
 	*viper.Viper
 }
@@ -48,13 +59,19 @@ func setDefaults(v *viper.Viper) {
 	v.SetDefault(WEB_PORT, 8000)
 	v.SetDefault(WEB_TEMPLATE_DIR, "./assets/")
 
-	// db stores
+	// db postgres
 	v.SetDefault(PG_HOST, "localhost")
 	v.SetDefault(PG_PORT, 5432)
 	v.SetDefault(PG_USER, "postgres")
 	v.SetDefault(PG_PASSWORD, "postgres")
 	v.SetDefault(PG_DBNAME, "postgres")
 	v.SetDefault(PG_SSLMODE, "disable")
+
+	// db mongo
+	v.SetDefault(MGO_HOSTS, "localhost:27017")
+	v.SetDefault(MGO_USER, "admin")
+	v.SetDefault(MGO_PASSWORD, "admin")
+	v.SetDefault(MGO_DBNAME, "admin")
 }
 
 func loadConfPath(v *viper.Viper, path string) error {
@@ -87,6 +104,15 @@ func (c *Config) Postgres() *PgConfig {
 		Password: c.GetString(PG_PASSWORD),
 		DBName:   c.GetString(PG_DBNAME),
 		SSLMode:  c.GetString(PG_SSLMODE),
+	}
+}
+
+func (c *Config) MongoDB() *MgoConfig {
+	return &MgoConfig{
+		Hosts:    c.GetString(MGO_HOSTS),
+		User:     c.GetString(MGO_USER),
+		Password: c.GetString(MGO_PASSWORD),
+		DBName:   c.GetString(MGO_DBNAME),
 	}
 }
 
