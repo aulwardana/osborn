@@ -24,6 +24,9 @@ const (
 	MGO_USER         string = "mgo.user"
 	MGO_PASSWORD     string = "mgo.password"
 	MGO_DBNAME       string = "mgo.dbname"
+	RDS_HOST         string = "rds.host"
+	RDS_PORT         string = "rds.port"
+	RDS_PASSWORD     string = "rds.password"
 )
 
 type WebConfig struct {
@@ -48,6 +51,12 @@ type MgoConfig struct {
 	DBName   string
 }
 
+type RdsConfig struct {
+	Host     string
+	Port     int
+	Password string
+}
+
 type Config struct {
 	*viper.Viper
 }
@@ -59,7 +68,7 @@ func setDefaults(v *viper.Viper) {
 	v.SetDefault(WEB_PORT, 8000)
 	v.SetDefault(WEB_TEMPLATE_DIR, "./assets/")
 
-	// db postgres
+	// db postgres (SQL DB)
 	v.SetDefault(PG_HOST, "localhost")
 	v.SetDefault(PG_PORT, 5432)
 	v.SetDefault(PG_USER, "postgres")
@@ -67,11 +76,16 @@ func setDefaults(v *viper.Viper) {
 	v.SetDefault(PG_DBNAME, "postgres")
 	v.SetDefault(PG_SSLMODE, "disable")
 
-	// db mongo
+	// db mongo (NO-SQL DB)
 	v.SetDefault(MGO_HOSTS, "localhost:27017")
 	v.SetDefault(MGO_USER, "admin")
 	v.SetDefault(MGO_PASSWORD, "admin")
 	v.SetDefault(MGO_DBNAME, "admin")
+
+	// db redis (KEY VALUE STORE DB)
+	v.SetDefault(RDS_HOST, "localhost")
+	v.SetDefault(RDS_PORT, 6379)
+	v.SetDefault(RDS_PASSWORD, "admin")
 }
 
 func loadConfPath(v *viper.Viper, path string) error {
@@ -113,6 +127,14 @@ func (c *Config) MongoDB() *MgoConfig {
 		User:     c.GetString(MGO_USER),
 		Password: c.GetString(MGO_PASSWORD),
 		DBName:   c.GetString(MGO_DBNAME),
+	}
+}
+
+func (c *Config) Redis() *RdsConfig {
+	return &RdsConfig{
+		Host:     c.GetString(RDS_HOST),
+		Port:     c.GetInt(RDS_PORT),
+		Password: c.GetString(RDS_PASSWORD),
 	}
 }
 

@@ -14,3 +14,7 @@ mgo:
   user: "aulwardana"
   password: "rahasia"
   dbname: "kijang"
+rds: 
+  host: "localhost"
+  port: 6379
+  password: "rahasia"

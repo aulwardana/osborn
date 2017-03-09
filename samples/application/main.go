@@ -20,6 +20,7 @@ func settingsInit() {
 
 	initDBSql()
 	initDBNoSql()
+	initDBKV()
 }
 
 func main() {
