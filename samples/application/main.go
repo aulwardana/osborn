@@ -21,6 +21,7 @@ func settingsInit() {
 	initDBSql()
 	initDBNoSql()
 	initDBKV()
+	initMqtt()
 }
 
 func main() {

@@ -27,6 +27,9 @@ const (
 	RDS_HOST         string = "rds.host"
 	RDS_PORT         string = "rds.port"
 	RDS_PASSWORD     string = "rds.password"
+	MQTT_PROTOCOL    string = "mqtt.protocol"
+	MQTT_URL         string = "mqtt.url"
+	MQTT_PORT        string = "mqtt.port"
 )
 
 type WebConfig struct {
@@ -55,6 +58,12 @@ type RdsConfig struct {
 	Host     string
 	Port     int
 	Password string
+}
+
+type MqttConfig struct {
+	Protocol string
+	Url      string
+	Port     int
 }
 
 type Config struct {
@@ -86,6 +95,11 @@ func setDefaults(v *viper.Viper) {
 	v.SetDefault(RDS_HOST, "localhost")
 	v.SetDefault(RDS_PORT, 6379)
 	v.SetDefault(RDS_PASSWORD, "admin")
+
+	// mqqt broker connection
+	v.SetDefault(MQTT_PROTOCOL, "tcp")
+	v.SetDefault(MQTT_URL, "localhost")
+	v.SetDefault(MQTT_PORT, 1883)
 }
 
 func loadConfPath(v *viper.Viper, path string) error {
@@ -135,6 +149,14 @@ func (c *Config) Redis() *RdsConfig {
 		Host:     c.GetString(RDS_HOST),
 		Port:     c.GetInt(RDS_PORT),
 		Password: c.GetString(RDS_PASSWORD),
+	}
+}
+
+func (c *Config) Mqtt() *MqttConfig {
+	return &MqttConfig{
+		Protocol: c.GetString(MQTT_PROTOCOL),
+		Url:      c.GetString(MQTT_URL),
+		Port:     c.GetInt(MQTT_PORT),
 	}
 }
 

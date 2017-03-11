@@ -18,3 +18,7 @@ rds:
   host: "localhost"
   port: 6379
   password: "rahasia"
+mqtt: 
+  protocol: "tcp"
+  url: "localhost"
+  port: 1883
