@@ -1,11 +1,12 @@
+# Add your own git ignore to improve your versioning from your development process. This git ignore is basic, you can modify according to the needs.
+
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
 *.a
 *.so
 *.log
 .idea
-# Folders
-_*
+.vscode
 
 # Architecture specific extensions/prefixes
 *.[568vq]
@@ -23,3 +24,12 @@ osborn
 *.exe
 *.ags
 *.prof
+
+# Folders
+_*
+samples/application/application
+samples/application/assets/typings/*
+samples/application/assets/node_modules/*
+samples/application/assets/*.log
+samples/application/assets/app/**/*.js
+samples/application/assets/app/**/*.js.map
