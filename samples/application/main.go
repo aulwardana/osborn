@@ -30,6 +30,7 @@ func main() {
 	r := mux.NewRouter()
 
 	api.Route(r, "/server", server, api.GET)
+	api.Route(r, "/insert", InsertData, api.GET)
 	template.ServeAngular(r, "/", cnf.Web().TemplateDir)
 
 	core.Run(r, cnf.Web().Address, cnf.Web().Port)
