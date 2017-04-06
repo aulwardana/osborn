@@ -5,7 +5,8 @@ import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './router.module';
 
 import {AppComponent} from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import {HomeComponent} from './components/home/home.component';
+import {InsertComponent} from './components/insert/insert.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    InsertComponent 
   ],
   bootstrap: [AppComponent]
 })
