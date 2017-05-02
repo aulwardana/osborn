@@ -30,6 +30,7 @@
       'typescript': 'npm:typescript/lib/typescript.js',
 
       'angular2-datatable': 'npm:angular2-datatable',
+      'ng2-charts': 'npm:ng2-charts',
       'lodash': 'npm:lodash/lodash.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
@@ -42,6 +43,10 @@
         defaultExtension: 'js'
       },
       'angular2-datatable': {
+        main: 'index.js',
+        defaultExtension: 'js'
+      },
+      'ng2-charts': {
         main: 'index.js',
         defaultExtension: 'js'
       }
