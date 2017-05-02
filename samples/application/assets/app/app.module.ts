@@ -8,20 +8,21 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
 import {InsertComponent} from './components/insert/insert.component';
 import {ChartComponent} from './components/chart/chart.component';
-import {TableComponent} from './components/table/table.component';
+
+import { TableModule }   from './components/table/table.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TableModule
   ],
   declarations: [
     AppComponent,
     HomeComponent,
     InsertComponent,
-    ChartComponent,
-    TableComponent 
+    ChartComponent
   ],
   bootstrap: [AppComponent]
 })

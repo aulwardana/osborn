@@ -2,7 +2,7 @@
     "name": "osborn",
     "version": "1.0.0",
     "author": "Aulia Arif Wardana",
-    "description": "Sample for angular module in osborn middleware",
+    "description": "Sample for angular module in osborn middleware framework",
     "scripts": {
         "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
         "tsc": "tsc",
@@ -15,31 +15,36 @@
     "license": "Free",
     "homepage": "http://aulwardana.github.io/",
     "dependencies": {
-        "@angular/common": "2.0.0",
-        "@angular/compiler": "2.0.0",
-        "@angular/core": "2.0.0",
-        "@angular/forms": "2.0.0",
-        "@angular/http": "2.0.0",
-        "@angular/platform-browser": "2.0.0",
-        "@angular/platform-browser-dynamic": "2.0.0",
-        "@angular/router": "3.0.0",
-        
-        "core-js": "^2.4.1",
-        "reflect-metadata": "^0.1.3",
-        "rxjs": "5.0.0-beta.12",
-        "systemjs": "0.19.27",
-        "zone.js": "^0.6.23",
+        "@angular/animations": "4.1.0",
+        "@angular/common": "4.1.0",
+        "@angular/compiler": "4.1.0",
+        "@angular/core": "4.1.0",
+        "@angular/forms": "4.1.0",
+        "@angular/http": "4.1.0",
+        "@angular/platform-browser": "4.1.0",
+        "@angular/platform-browser-dynamic": "4.1.0",
+        "@angular/router": "4.1.0",
 
-        "chart.js": "^2.1.6",
-        "ng2-charts": "^1.1.0",
+        "core-js": "2.4.1",
+        "highlight.js": "9.11.0",
+        "lodash": "4.17.4",
+        "normalize.css": "6.0.0",
+        "rxjs": "5.3.0",
+        "zone.js": "0.8.9",
+        "reflect-metadata": "0.1.10",
+        "systemjs": "0.20.12",
+        "plugin-typescript": "7.0.6",
+        "angular-in-memory-web-api": "0.3.1",
         
-        "bootstrap": "^3.3.6"
+        "angular2-datatable": "0.6.0",
+        
+        "bootstrap": "3.3.7"
     },
     "devDependencies": {
-        "concurrently": "^2.2.0",
-        "lite-server": "^2.2.0",
-        "typescript": "^2.0.2",
-        "typings": "^1.0.4"
+        "concurrently": "3.4.0",
+        "lite-server": "2.3.0",
+        "typescript": "2.3.2",
+        "typings": "2.1.1"
     },
     "repository": {}
 }
