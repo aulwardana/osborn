@@ -5,7 +5,7 @@ import {Http} from "@angular/http";
 @Component({
     templateUrl: getTemplatePath("table.component.html")
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
     public pageTitleTable: string = 'Page Table';
     public data;
     public filterQuery = "";
