@@ -4,7 +4,7 @@ import {HttpModule} from '@angular/http';
 
 //Module
 import {AppRoutingModule} from './router.module';
-import { TableModule }   from './components/table/table.module';
+import { TableModule }   from './modules/table.module';
 import { ChartsModule } from 'ng2-charts';
 
 //Component

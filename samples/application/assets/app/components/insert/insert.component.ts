@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {getTemplatePath} from "../../services/utility";
-import {Insert, InsertService} from "../../services/insert.services";
+import {Insert, InsertService} from "../../services/insert.service";
 
 @Component({
     templateUrl: getTemplatePath("insert.component.html"),
@@ -9,7 +9,7 @@ import {Insert, InsertService} from "../../services/insert.services";
 export class InsertComponent {
     public pageTitleInsert: string = 'Page Insert';
 
-    kota = ['Malang', 'Bandung', 'Jakarta', 'Semarang'];
+    citys = ['Malang', 'Bandung', 'Jakarta', 'Semarang'];
 
     inserts: Insert[];
     newInsert: Insert = new Insert();

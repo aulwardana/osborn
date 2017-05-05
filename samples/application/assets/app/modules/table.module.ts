@@ -4,8 +4,8 @@ import { FormsModule } from "@angular/forms";
 import { DataTableModule } from "angular2-datatable";
 import { HttpModule } from "@angular/http";
 
-import { TableComponent }   from './table.component';
-import { DataFilterPipe }   from "../../services/data-filter-pipe";
+import { TableComponent }   from "../components/table/table.component";
+import { DataFilterPipe }   from "../services/table-data-filter.service";
 
 @NgModule({
   imports:      [ 
