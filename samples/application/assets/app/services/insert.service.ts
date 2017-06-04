@@ -8,7 +8,6 @@ import {AppService} from './app.service';
 
 export class Insert {
   constructor(
-    public id: string = '',
     public name: string = '',
     public email: string = '',
     public age: number = 0,
@@ -17,24 +16,24 @@ export class Insert {
 
 @Injectable()
 export class InsertService {
-  private prefix = '/insert';
+  private prefix = '/testPostAPI';
 
-  constructor(private service: AppService) {
-  }
+  constructor(private service: AppService) {}
 
-  list(): Observable<Insert[]> {
+  /*list(): Observable<Insert[]> {
     return this.service.get(this.prefix);
-  }
+  }*/
 
   create(newInsert: Insert): Observable<Insert[]> {
+    console.log(newInsert);
     return this.service.post(this.prefix, newInsert);
   }
 
-  remove(id: string): Observable<Insert[]> {
+  /*remove(id: string): Observable<Insert[]> {
     return this.service.delete(`${this.prefix}/${id}`);
   }
 
   update(insert: Insert): Observable<Insert[]> {
     return this.service.put(`${this.prefix}/`, insert);
-  }
+  }*/
 }

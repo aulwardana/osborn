@@ -13,7 +13,7 @@ func initDBNoSql() *mgo.Session {
 	return mongodb.Connect(cnf.MongoDB().Hosts, cnf.MongoDB().User, cnf.MongoDB().Password, cnf.MongoDB().DBName)
 }
 
-func InsertData(w http.ResponseWriter, r *http.Request) {
+func InsertDataMgo(w http.ResponseWriter, r *http.Request) {
 	sensing := &sensor.SensorInsert{
 		Code:        "1a",
 		Temperature: 10,

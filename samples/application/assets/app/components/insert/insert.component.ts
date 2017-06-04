@@ -14,37 +14,33 @@ export class InsertComponent {
     inserts: Insert[];
     newInsert: Insert = new Insert();
     modifyingInsert: Insert;
-    creating: boolean = false;
+    //creating: boolean = false;
 
-    constructor(
-        private insertsService: InsertService) {}
+    constructor(private insertsService: InsertService) {}
 
-    ngOnInit() {
-        this.insertsService
-            .list()
-            .subscribe(
-            inserts => this.inserts = inserts);
-    }
+    /*ngOnInit() {
+        this.insertsService.list().subscribe(inserts => this.inserts = inserts);
+    }*/
 
     create() {
-        if (this.creating && this.newInsert.name) {
+        //if (this.creating && this.newInsert.name) {
         this.insertsService
             .create(this.newInsert)
             .subscribe(
                 inserts => this.inserts = inserts,
                 null,
                 () => {
-                this.creating = false;
+                //this.creating = false;
                 this.newInsert = new Insert();
                 });
 
         return;
-        }
+        //}
 
-        this.creating = !this.creating;
+        //this.creating = !this.creating;
     }
 
-    remove(id: string) {
+    /*remove(id: string) {
         this.insertsService
             .remove(id)
             .subscribe(
@@ -59,5 +55,5 @@ export class InsertComponent {
                 inserts => this.inserts = inserts,
                 null);
         }
-    }
+    }*/
 }

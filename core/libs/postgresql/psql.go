@@ -17,11 +17,6 @@ func Connect(host string, port int, user string, password string, dbname string,
 	}
 	defer db.Close()
 
-	err = db.Ping()
-	if err != nil {
-		panic(err)
-	}
-
 	conInfo := fmt.Sprintf("%s:%d", host, port)
 	log.Println("Postgres started:" + conInfo + " DBName:" + dbname)
 
