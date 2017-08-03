@@ -11,11 +11,13 @@ import (
 )
 
 type UsersData struct {
-	Name  string
-	Email string
-	Age   int64
-	City  string
+	Name  string `json:"name"`
+	Email string `json:"email"`
+	Age   int64  `json:"age"`
+	City  string `json:"city"`
 }
+
+type Users []UsersData
 
 func server(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Url : %s Path : %s\n", r.Host, r.URL.Path)
@@ -43,5 +45,12 @@ func APITestPost(w http.ResponseWriter, r *http.Request) {
 }
 
 func APITestGet(w http.ResponseWriter, r *http.Request) {
+	users := Users{
+		UsersData{Name: "Aul", Email: "auldesain@gmail.com", Age: 25, City: "Malang"},
+		UsersData{Name: "Embuh", Email: "embuh@gmail.com", Age: 20, City: "Surabaya"},
+	}
 
+	if err := json.NewEncoder(w).Encode(users); err != nil {
+		panic(err)
+	}
 }

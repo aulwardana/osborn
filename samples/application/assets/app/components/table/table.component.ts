@@ -17,7 +17,7 @@ export class TableComponent {
     }
 
     ngOnInit(): void {
-        this.http.get("app/components/table/data.json")
+        this.http.get("/testGetAPI")
             .subscribe((data)=> {
                 setTimeout(()=> {
                     this.data = data.json();
