@@ -26,6 +26,7 @@ func settingsInit() {
 
 func main() {
 	settingsInit()
+	FlatProc()
 
 	r := mux.NewRouter()
 

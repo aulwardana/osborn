@@ -1,0 +1,10 @@
+namespace sensors;
+
+table Sensor {
+    id: int;
+    temperature:float;
+    humidity:float;
+    topic:string;
+}
+
+root_type Sensor;
